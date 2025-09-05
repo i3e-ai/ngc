@@ -1,7 +1,7 @@
 /* --- Main Header Bar --- */
 .header-wrapper {
-    background-color: #007aff; /* Changed to blue */
-    border-bottom: 1px solid #005ecb; /* A darker blue for the border */
+    background-color: white; /* Changed to blue */
+    border-bottom: 1px solid; /* A darker blue for the border */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -37,7 +37,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
-    color: #ffffff; /* Changed to white for contrast */
+    color: #000000; /* Changed to white for contrast */
 }
 
 /* --- Hamburger Menu --- */
@@ -51,7 +51,7 @@
 .nav-hamburger h2 {
     margin: 0;
     font-size: 1.75rem;
-    color: #ffffff; /* Changed to white for contrast */
+    color: #000000; /* Changed to white for contrast */
 }
 
 /* --- Slide-out Menu Panel --- */
