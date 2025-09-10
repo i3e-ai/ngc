@@ -1,9 +1,9 @@
-function handleAddToCart(productId){
+function handleAddToCart(productId) {
   console.log(`Product with ID: ${productId} added to Cart!`);
   alert(`Added ${productId} to your cart.`);
 }
 
-export default function decorate (block){
+export default function decorate(block) {
   const [imageCell, detailsCell] = block.querySelector(':scope > div').children;
   imageCell.classList.add('prodect-image-wrapper');
   detailsCell.classList.add('product-details');
@@ -11,13 +11,11 @@ export default function decorate (block){
   const titleEl = detailsCell.querySelector('h2');
   const priceEl = detailsCell.querySelector('h3');
 
-  if(titleEl){
+  if (titleEl) {
     titleEl.classList.add('product-title');
   }
-  if(priceEl){
+  if (priceEl) {
     priceEl.classList.add('product-price');
-    const priceValue = parseFloat(priceEl.textContent);
-
   }
   const addButton = document.createElement('button');
   addButton.textContent = 'Add to Content';
@@ -25,7 +23,7 @@ export default function decorate (block){
 
   const productId = titleEl ? titleEl.textContent.trim().toLowerCase().replace(/\s+/g, '-') : 'unknown-product';
 
-  addButton.addEventListener('click', ()=>{
+  addButton.addEventListener('click', () => {
     handleAddToCart(productId);
   });
 

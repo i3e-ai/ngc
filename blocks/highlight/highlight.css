@@ -8,7 +8,7 @@
     padding: 24px;
     margin: 2rem 0;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
 }
 
 .highlight.block h1 {
@@ -25,7 +25,7 @@
     font-size: 1.25rem;
     font-weight: 700;
     color: #111;
-    margin: 0 0 4px 0;
+    margin: 0 0 4px;
     padding-top: 10px;
 }
 
@@ -36,7 +36,7 @@
     line-height: 1.5;
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .highlight.block {
         flex-direction: column;
         text-align: center;

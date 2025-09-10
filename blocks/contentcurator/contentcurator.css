@@ -17,7 +17,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
@@ -49,7 +49,7 @@
 }
 
 .featured-title {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   font-size: 1.2rem;
   font-weight: 600;
   color: #333;
@@ -67,7 +67,7 @@
   top: 12px;
   left: 12px;
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
   padding: 4px 10px;
   border-radius: 16px;
   font-size: 0.75rem;
@@ -75,13 +75,13 @@
 }
 
 /* --- Responsive Grid Adjustments --- */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .featured-content {
     grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
   }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
   .featured-content {
     grid-template-columns: repeat(3, 1fr); /* 3 columns on desktops */
   }

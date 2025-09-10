@@ -37,7 +37,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0;
-    color: #000000; /* Changed to white for contrast */
+    color: #000; /* Changed to white for contrast */
 }
 
 /* --- Hamburger Menu --- */
@@ -51,7 +51,7 @@
 .nav-hamburger h2 {
     margin: 0;
     font-size: 1.75rem;
-    color: #000000; /* Changed to white for contrast */
+    color: #000; /* Changed to white for contrast */
 }
 
 /* --- Slide-out Menu Panel --- */
