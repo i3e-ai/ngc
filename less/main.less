@@ -1,0 +1,91 @@
+// --- Font Imports & Declarations ---
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap'); // Sora font
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Regular.woff2') format('woff2');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Bold.woff2') format('woff2');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+// --- Variable Definitions ---
+
+// Fonts
+@font-primary: 'Sora', sans-serif;
+@font-secondary: 'Geist', sans-serif;
+
+// Colors
+@text-primary: #ffffff;
+@text-secondary: #636363;
+@background-primary: #000000;
+
+// Text Sizes
+@text-sm: 0.875rem;
+@text-base: 1rem;
+@text-lg: 1.125rem; // Corrected from 1.25rem to be smaller than xl
+@text-xl: 1.25rem;
+@text-2xl: 1.5rem;
+@text-3xl: 1.875rem;
+@text-4xl: 2.25rem;
+
+// Spacing
+@space-2: 0.5rem;
+@space-4: 1rem;
+@space-6: 1.5rem;
+@space-8: 2rem;
+@space-12: 3rem;
+@space-16: 4rem;
+
+// --- Reset & Base Styles ---
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: @font-primary; // Using the primary font for the body
+  font-size: @text-base;
+  line-height: 1.5;
+  color: @text-primary;
+  background: @background-primary;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: @font-secondary; // Using the secondary font for headings
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+// Nested heading styles for organization
+h1 {
+  font-size: @text-4xl;
+}
+h2 {
+  font-size: @text-3xl;
+}
+h3 {
+  font-size: @text-2xl;
+}
+h4 {
+  font-size: @text-xl;
+}
+
+p {
+  margin-bottom: @space-4;
+  line-height: 1.6;
+}
