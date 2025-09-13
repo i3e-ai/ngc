@@ -1,0 +1,62 @@
+@import '../../less/main.less';
+// header-contianer
+.header-wrapper {
+  background-color: @background-primary;
+  width: 966.4;
+}
+
+//parent blocks conist all the elements
+.header.block > div:first-child {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88px;
+  padding: 0 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// logo & brand title
+.nav-brand {
+  align-items: center;
+  display: flex;
+}
+
+//logo image
+.nav-brand img {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+  padding: 10px;
+}
+
+// brand title
+#eds-app {
+  font: @font-primary;
+  font-weight: 700;
+  font-size: @text-4xl; 
+  padding-bottom: 20px;
+}
+
+.nav-hamburger {
+  position: absolute;
+  left: @space-2;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//hamburger button
+.nav-hamburger button {
+  padding: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+//hamburger icon
+.nav-hamburger h2 {
+  font-size: @text-3xl;
+  color: @text-primary;
+  margin: 0;
+}
