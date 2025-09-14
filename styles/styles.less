@@ -25,7 +25,7 @@
 // Colors
 @text-primary: #000000;
 @text-secondary: #636363;
-@text-hover-transition: #4A4A4A;
+@text-hover-transition: #4a4a4a;
 @background-primary: #fafafa;
 @border-color: #8c92ac;
 
@@ -90,4 +90,34 @@ h4 {
 p {
   margin-bottom: @space-4;
   line-height: 1.6;
+}
+
+main > .section {
+  margin: 0 0;
+}
+
+main > .section > div {
+  margin: auto;
+  padding: 0 0;
+}
+
+main > .section:first-of-type {
+  margin-top: 0;
+}
+
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
 }

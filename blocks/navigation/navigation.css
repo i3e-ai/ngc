@@ -106,6 +106,30 @@ p {
   margin-bottom: 1rem;
   line-height: 1.6;
 }
+main > .section {
+  margin: 0 0;
+}
+main > .section > div {
+  margin: auto;
+  padding: 0 0;
+}
+main > .section:first-of-type {
+  margin-top: 0;
+}
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+.icon {
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
+.icon img {
+  height: 100%;
+  width: 100%;
+}
 .nav-menu {
   list-style: none;
   margin: 0;
@@ -140,16 +164,16 @@ p {
 .nav-menu li a:hover,
 .nav-menu li a:focus {
   background-color: #ffffff;
-  color: #4A4A4A;
+  color: #4a4a4a;
   outline: none;
   transform: translateX(5px);
 }
 .nav-menu li a:focus {
-  box-shadow: inset 3px 0 0 #4A4A4A;
+  box-shadow: inset 3px 0 0 #4a4a4a;
 }
 .nav-menu li a.active,
 .nav-menu li a[aria-current='page'] {
-  background-color: #4A4A4A;
+  background-color: #4a4a4a;
   color: white;
 }
 .nav-menu li a.active::before,
