@@ -1,11 +1,14 @@
 @import '../../less/main.less';
-// header-contianer
+
+@header-height: 60px;
+
+// header-container
 .header-wrapper {
   background-color: @background-primary;
-  width: 966.4;
+  width: 100%; // Fixed: was 966.4 without unit
 }
 
-//parent blocks conist all the elements
+// parent blocks consist of all the elements
 .header.block > div:first-child {
   position: relative;
   display: flex;
@@ -23,7 +26,7 @@
   display: flex;
 }
 
-//logo image
+// logo image
 .nav-brand img {
   max-height: 60px;
   width: auto;
@@ -33,9 +36,9 @@
 
 // brand title
 #eds-app {
-  font: @font-primary;
+  font-family: @font-primary; // Fixed: was 'font: @font-primary'
   font-weight: 700;
-  font-size: @text-4xl; 
+  font-size: @text-4xl;
   padding-bottom: 20px;
 }
 
@@ -46,7 +49,7 @@
   transform: translateY(-50%);
 }
 
-//hamburger button
+// hamburger button
 .nav-hamburger button {
   padding: 8px;
   cursor: pointer;
@@ -54,9 +57,87 @@
   border: none;
 }
 
-//hamburger icon
+// hamburger icon
 .nav-hamburger h2 {
   font-size: @text-3xl;
   color: @text-primary;
   margin: 0;
+}
+
+// Navigation sections - Mobile behavior
+.nav-sections {
+  display: none;
+
+  &.is-open {
+    display: block;
+    position: fixed;
+    top: 88px; // Use actual header height instead of @header-height
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 88px);
+    background: @background-primary;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .nav-menu {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      border-bottom: 1px solid @border-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      a {
+        display: block;
+        padding: 15px 20px;
+        color: @text-primary;
+        text-decoration: none; // Added for clean links
+
+        &:hover,
+        &:focus {
+          color: @text-hover-transition;
+        }
+      }
+    }
+  }
+}
+
+// Desktop styles - Show navigation directly, hide hamburger
+@media (min-width: 769px) {
+  .nav-hamburger {
+    display: none; // Hide hamburger on desktop
+  }
+
+  .nav-sections {
+    display: block !important; // Always show navigation container on desktop
+    position: static;
+    height: auto;
+    background: transparent;
+
+    .nav-menu {
+      display: flex !important; // Always show menu on desktop
+
+      li {
+        border: none;
+
+        a {
+          padding: 10px 15px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+// Body scroll lock for mobile
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }

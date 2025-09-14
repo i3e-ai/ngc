@@ -1,0 +1,167 @@
+@import '../../less/main.less';
+
+// Variables
+@background-primary: #f5f5f5;
+@border-color: #eee;
+@box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+@transition-speed: 0.3s;
+@mobile-breakpoint: 768px;
+
+// Base navigation menu styles
+.nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  // ALWAYS HIDDEN by default - controlled by parent container
+  display: none !important;
+
+  // Only show when parent nav-sections has is-open class
+  .nav-sections.is-open & {
+    display: block !important;
+    position: fixed;
+    top: 60px; // Match your header height
+    left: 0;
+    width: 100%;
+    background-color: @background-primary;
+    box-shadow: @box-shadow;
+    z-index: 1000;
+    animation: fadeInDown @transition-speed ease-out;
+  }
+
+  // Navigation items
+  li {
+    border-bottom: 1px solid @border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: @text-primary;
+      transition: all @transition-speed ease;
+      position: relative;
+
+      // Hover and focus states
+      &:hover,
+      &:focus {
+        background-color: lighten(@background-primary, 10%);
+        color: @text-hover-transition;
+        outline: none;
+        transform: translateX(5px);
+      }
+
+      // Focus accessibility
+      &:focus {
+        box-shadow: inset 3px 0 0 @text-hover-transition;
+      }
+
+      // Active page indicator
+      &.active,
+      &[aria-current='page'] {
+        background-color: @text-hover-transition;
+        color: white;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          background: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile specific styles
+@media (max-width: @mobile-breakpoint) {
+  .nav-sections.is-open .nav-menu {
+    position: fixed;
+    top: 88px; // Match your actual header height
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
+    background: @background-primary;
+    animation: fadeInUp @transition-speed ease-out;
+
+    li {
+      a {
+        padding: 18px 20px;
+        font-size: 16px;
+        border-bottom: 1px solid @border-color;
+
+        &:hover {
+          transform: none;
+          padding-left: 25px;
+        }
+      }
+    }
+  }
+}
+
+// Desktop styles - Navigation appears on left side where hamburger was
+@media (min-width: (@mobile-breakpoint + 1px)) {
+  .nav-sections {
+    // Navigation takes hamburger's position on desktop
+    position: absolute;
+    left: @space-2; // Same as hamburger position
+    top: 50%;
+    transform: translateY(-50%);
+    display: block !important;
+
+    .nav-menu {
+      display: flex !important;
+      position: static;
+      background: transparent;
+      box-shadow: none;
+      animation: none;
+      gap: 15px;
+
+      li {
+        border: none;
+
+        a {
+          padding: 10px 15px;
+          border-radius: 4px;
+          white-space: nowrap;
+
+          &:hover {
+            background-color: lighten(@background-primary, 5%);
+            transform: none;
+            padding-left: 15px; // Keep consistent padding
+          }
+        }
+      }
+    }
+  }
+}
