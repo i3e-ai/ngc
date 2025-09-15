@@ -1,140 +1,174 @@
-function initializeCarousel(block, nextBtn, prevBtn) {
-  const slides = document.querySelectorAll('.slide');
+function initializeCarousel(block) {
+  const slidesContainer = block.querySelector('.slides-container');
+  const slides = block.querySelectorAll('.slide');
+  const pagination = document.createElement('div');
+  pagination.className = 'carousel-pagination';
+  block.appendChild(pagination);
+
   let currentSlide = 0;
+  let autoplayInterval = null;
   const maxSlide = slides.length - 1;
 
-  if (slides.length === 0) {
+  if (slides.length <= 1) {
+    pagination.style.display = 'none';
     return;
   }
 
-  function updateButtonStates() {
-    if (prevBtn) {
-      prevBtn.setAttribute(
-        'aria-disabled',
-        currentSlide === 0 ? 'true' : 'false',
-      );
-    }
-    if (nextBtn) {
-      nextBtn.setAttribute(
-        'aria-disabled',
-        currentSlide === maxSlide ? 'true' : 'false',
-      );
-    }
-  }
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const swipeThreshold = 50; // Minimum pixels for a swipe
 
-  // Set initial positions
-  slides.forEach((slide, index) => {
-    slide.style.transform = `translateX(${index * 100}%)`;
-    slide.setAttribute('aria-hidden', index !== 0 ? 'true' : 'false');
-  });
+  // --- MOVED FUNCTIONS UP ---
+  // These functions are now defined before they are used below.
 
   function updateSlides() {
     slides.forEach((slide, index) => {
-      const translateValue = 100 * (index - currentSlide);
-      slide.style.transform = `translateX(${translateValue}%)`;
+      slide.style.opacity = index === currentSlide ? '1' : '0';
       slide.setAttribute(
         'aria-hidden',
         index !== currentSlide ? 'true' : 'false',
       );
     });
-
-    // Update button states for accessibility
-    updateButtonStates();
+    const dots = pagination.querySelectorAll('button');
+    dots.forEach((dot, index) => {
+      dot.className = index === currentSlide ? 'active' : '';
+    });
   }
 
-  /**
-   * Moves to next slide
-   */
+  function startAutoplay() {
+    // eslint-disable-next-line no-use-before-define
+    autoplayInterval = setInterval(nextSlide, 5000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayInterval);
+    startAutoplay();
+  }
+
   function nextSlide() {
     currentSlide = currentSlide === maxSlide ? 0 : currentSlide + 1;
     updateSlides();
   }
 
-  /**
-   * Moves to previous slide
-   */
   function prevSlide() {
     currentSlide = currentSlide === 0 ? maxSlide : currentSlide - 1;
     updateSlides();
   }
 
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  function handleSwipe() {
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swiped Left
+      nextSlide();
+      resetAutoplay();
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      // Swiped Right
+      prevSlide();
+      resetAutoplay();
+    }
+  }
+
+  // --- END OF MOVED FUNCTIONS ---
+
+  // Create pagination dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      // Calls to updateSlides and resetAutoplay are now valid
+      updateSlides();
+      resetAutoplay();
+    });
+    pagination.appendChild(dot);
+  });
+
+  // Touch Event Handlers
+  function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    // Call to handleSwipe is now valid
+    handleSwipe();
+  }
+
+  slidesContainer.addEventListener('touchstart', handleTouchStart, {
+    passive: true,
+  });
+  slidesContainer.addEventListener('touchend', handleTouchEnd, {
+    passive: true,
+  });
 
   block.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       prevSlide();
+      resetAutoplay();
     } else if (e.key === 'ArrowRight') {
       e.preventDefault();
       nextSlide();
+      resetAutoplay();
     }
   });
 
+  block.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+  block.addEventListener('mouseleave', startAutoplay);
+
   block.setAttribute('tabindex', '0');
-  updateButtonStates();
+  updateSlides();
+  startAutoplay();
 }
 
 export default function decorate(block) {
-  // Create navigation buttons
-  function createButton(className, text) {
-    const button = document.createElement('button');
-    button.classList.add('btn', className);
-    button.setAttribute('aria-label', text);
-    button.textContent = text;
-    return button;
-  }
+  const slidesContainer = document.createElement('div');
+  slidesContainer.className = 'slides-container';
 
-  // Assumed variables based on original code
-  let nextBtn;
-  let prevBtn;
   const rows = [...block.children];
 
-  // Process each row
   rows.forEach((row) => {
-    const centerDiv = row.querySelector('div[data-align="center"]');
+    row.classList.add('slide');
+    const [imageCol, textCol] = row.children;
 
-    if (centerDiv) {
-      // Check for navigation symbols
-      const heading = centerDiv.querySelector('h1, h2');
-      if (heading) {
-        const symbol = heading.textContent.trim();
-        if (symbol === '<') {
-          // Create next button
-          nextBtn = createButton('btn-next', 'Next');
-          row.replaceWith(nextBtn);
-          return;
-        }
-        if (symbol === '>') {
-          // Create previous button
-          prevBtn = createButton('btn-prev', 'Previous');
-          row.replaceWith(prevBtn);
-          return;
-        }
+    // **NEW: Handle the background image**
+    if (imageCol) {
+      const img = imageCol.querySelector('img');
+      if (img) {
+        // Get the image URL and apply it to the parent slide's background
+        row.style.backgroundImage = `url(${img.src})`;
+        // Remove the original image column so it doesn't take up space
+        imageCol.remove();
       }
     }
 
-    // This is a content slide
-    row.classList.add('slide');
+    if (textCol) {
+      textCol.classList.add('slide-text');
+      // Check for headings before adding classes to avoid errors
+      const h2 = textCol.querySelector('h2');
+      const h3 = textCol.querySelector('h3');
+      if (h2) h2.classList.add('slide-title');
+      if (h3) h3.classList.add('slide-subtitle');
 
-    // Process columns
-    const columns = [...row.children];
-    columns.forEach((col, colIndex) => {
-      if (colIndex === 0) {
-        col.classList.add('slide-image');
-      } else if (colIndex === 1) {
-        col.classList.add('slide-text');
+      // creting h3 element a button
+      const allH3s = textCol.querySelectorAll('h3');
+      allH3s.forEach((h3Element) => {
+        // Check if the h3 is meant to be a button
+        if (h3Element.textContent.trim().toLowerCase() === 'know more') {
+          const link = document.createElement('a');
+          link.href = '#'; // Set a placeholder link
+          link.className = 'slide-button';
+          link.textContent = h3Element.textContent;
 
-        // Add classes to headings
-        const h2 = col.querySelector('h2');
-        const h3 = col.querySelector('h3');
-
-        if (h2) h2.classList.add('slide-title');
-        if (h3) h3.classList.add('slide-subtitle');
-      }
-    });
+          // Replace the h3 element with the new 'a' tag
+          h3Element.replaceWith(link);
+        }
+      });
+    }
+    slidesContainer.appendChild(row);
   });
 
-  // Initialize carousel functionality
-  initializeCarousel(block, nextBtn, prevBtn);
+  block.innerHTML = '';
+  block.appendChild(slidesContainer);
+
+  initializeCarousel(block); // Assumes initializeCarousel is in the same file or imported
 }
