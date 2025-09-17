@@ -46,16 +46,12 @@ export default function decorate(block) {
               .trim(); // Join back in case subtitle has colons
 
             // The first character is likely the emoji
-            const emoji = emojiAndTitle.substring(
-              0,
-              emojiAndTitle.indexOf(' ') + 1,
-            );
+            
             const title = emojiAndTitle.substring(
               emojiAndTitle.indexOf(' ') + 1,
             );
 
             slide.innerHTML = `
-              <span class="highlight-emoji">${emoji}</span>
               <span class="highlight-title">${title}:</span>
               <span class="highlight-subtitle">${subtitle}</span>
             `;

@@ -151,7 +151,7 @@ main img {
   justify-content: center;
   position: sticky;
   top: 0;
-  width: 100%;
+  width: 100;
   background-color: #ffffff;
   color: #000000;
   z-index: 1000;
