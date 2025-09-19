@@ -270,6 +270,7 @@ main img {
   max-width: 50%;
   padding-top: 340px;
   font-family: 'Sora', sans-serif;
+  padding-bottom: 40px;
 }
 .hero-carousel .slide-text .slide-title {
   font-size: 3rem;
@@ -336,7 +337,6 @@ main img {
   .hero-carousel .slide-text {
     max-width: 100%;
     text-align: center;
-    padding: 1.5rem;
   }
   .hero-carousel .slide-text .slide-title {
     font-size: 2rem;

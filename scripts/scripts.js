@@ -10,25 +10,14 @@ import {
   loadCSS,
 } from './aem.js';
 
-function moveHighlightBlock() {
-  const highlightContainer = document.querySelector('.highlight-container');
-  // Find the header, which is usually a direct child of the body
-  const header = document.querySelector('header');
-  if (highlightContainer && header) {
-    // Move the highlight block to be right before the header
-    header.before(highlightContainer);
-
-    highlightContainer.style.display = '';
-  }
-}
-
 /**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
   try {
-    if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
+    if (!window.location.hostname.includes('localhost'))
+      sessionStorage.setItem('fonts-loaded', 'true');
   } catch (e) {
     // do nothing
   }
@@ -86,7 +75,6 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }
-
 /**
  * Loads everything that happens a lot later,
  * without impacting the user experience.
@@ -104,4 +92,3 @@ async function loadPage() {
 }
 
 loadPage();
-moveHighlightBlock();

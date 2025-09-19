@@ -295,6 +295,7 @@ function getMetadata(name, doc = document) {
   return meta || '';
 }
 
+
 /**
  * Returns a picture element with webp and fallbacks
  * @param {string} src The image URL
@@ -682,6 +683,25 @@ async function loadSections(element) {
     }
   }
 }
+
+export async function loadFragment(path) {
+  if (path && path.startsWith('/')) {
+    const resp = await fetch(`${path}.plain.html`);
+    if (resp.ok) {
+      const main = document.createElement('main');
+      main.innerHTML = await resp.text();
+
+      // CORRECTED: Call the functions directly, do not import them.
+      // This fixes the 'no-shadow' and 'no-self-import' errors.
+      decorateSections(main);
+      decorateBlocks(main);
+      
+      return main;
+    }
+  }
+  return null;
+}
+
 
 init();
 
