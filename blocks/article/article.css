@@ -7,12 +7,10 @@
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
-
 .article.block .article-image {
   display: flex;
   justify-content: center;
 }
-
 .article.block .article-image img {
   max-width: 100%;
   width: auto;
@@ -21,13 +19,11 @@
   border-radius: 8px;
   border: 1px solid #ddd;
 }
-
 .article.block .article-text h1,
 .article.block .article-text h2 {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
 .article.block .article-text p,
 .article.block .article-text ul {
   margin-bottom: 1rem;

@@ -1,204 +1,171 @@
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSn3-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSn3-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSnn-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSnn-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmScMnn-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmScMnn-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Sora;
+  font-family: 'Sora';
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf") format('truetype');
+  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf) format('truetype');
 }
-
 @font-face {
-  font-family: Geist;
+  font-family: 'Geist';
   src: url('/fonts/Geist-Regular.woff2') format('woff2');
   font-weight: 400;
-
   /* Regular */
   font-style: normal;
 }
-
 @font-face {
-  font-family: Geist;
+  font-family: 'Geist';
   src: url('/fonts/Geist-Bold.woff2') format('woff2');
   font-weight: 700;
-
   /* Bold */
   font-style: normal;
 }
-
 html {
   font-size: 16px;
   scroll-behavior: smooth;
   padding: 0;
 }
-
 body {
-  font-family: Sora, sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #000;
+  color: #000000;
   background: #fafafa;
   -webkit-font-smoothing: antialiased;
   padding: 0;
 }
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: Geist, sans-serif;
+  font-family: 'Geist', sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
-
 h1 {
   font-size: 2.25rem;
 }
-
 h2 {
   font-size: 1.875rem;
 }
-
 h3 {
   font-size: 1.5rem;
 }
-
 h4 {
   font-size: 1.25rem;
 }
-
 p {
   margin-bottom: 1rem;
   line-height: 1.6;
 }
-
 main > .section {
-  margin: 0;
+  margin: 0 0;
 }
-
 main > .section > div {
   margin: auto;
-  padding: 0;
+  padding: 0 0;
 }
-
 main > .section:first-of-type {
   margin-top: 0;
 }
-
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
 }
-
 .icon {
   display: inline-block;
   height: 24px;
   width: 24px;
 }
-
 .icon img {
   height: 100%;
   width: 100%;
 }
-
 /* Remove padding from section and wrapper containers */
 .section.highlight-container {
   margin: 0;
   padding: 0;
 }
-
 .highlight-wrapper {
   margin: 0;
   padding: 0;
 }
-
 .highlight.block {
   /* Set a fixed height for the bar */
   height: 22px;
   line-height: 22px;
-
   /* Use Flexbox to ensure alignment */
   display: flex;
   align-items: center;
   justify-content: center;
   position: sticky;
   top: 0;
-  width: 100%;
-  background-color: #fff;
-  color: #000;
+  width: 100;
+  background-color: #ffffff;
+  color: #000000;
   z-index: 1000;
   box-sizing: border-box;
   font-size: 0.8rem;
-
   /* Using your specified font family */
-  font-family: Sora, sans-serif;
-
+  font-family: 'Sora', sans-serif;
   /* CRITICAL: Control text overflow */
   white-space: nowrap;
   overflow: hidden;
   padding: 0 20px;
-
   /* Remove any default margins */
   margin: 0;
 }
-
 /* Target the main div container inside highlight block */
 .highlight.block > div {
   display: flex;
@@ -207,19 +174,16 @@ main img {
   width: 100%;
   height: 100%;
   gap: 12px;
-
   /* Space between emoji, title, and description */
   white-space: nowrap;
   overflow: hidden;
 }
-
 /* Target the nested divs that contain the emoji and content */
 .highlight.block > div > div {
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
-
 /* Style the emoji (h1) */
 .highlight.block h1 {
   margin: 0;
@@ -228,7 +192,6 @@ main img {
   line-height: 1;
   display: inline-block;
 }
-
 /* Style the title (h2) */
 .highlight.block h2 {
   font-size: 0.9rem;
@@ -236,10 +199,8 @@ main img {
   line-height: 1;
   display: inline-block;
   margin-right: 8px;
-
   /* Small space before description */
 }
-
 /* Style the description (p) */
 .highlight.block p {
   margin: 0;
@@ -250,27 +211,22 @@ main img {
   display: inline-block;
   font-weight: 300;
 }
-
 /* Ensure text doesn't overflow on small screens */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .highlight.block {
     font-size: 0.7rem;
     padding: 0 15px;
   }
-
   .highlight.block h1 {
     font-size: 1rem;
   }
-
   .highlight.block h2 {
     font-size: 0.7rem;
   }
-
   .highlight.block p {
     font-size: 0.7rem;
   }
 }
-
 .nav-sections .nav-menu {
   display: flex;
   justify-content: flex-start;
@@ -279,11 +235,9 @@ main img {
   margin: 0;
   padding: 0 1px;
 }
-
 .nav-sections .nav-menu > li {
   margin: 0 15px;
 }
-
 .nav-sections .nav-menu > li > a {
   color: #f5f5f7;
   text-decoration: none;
@@ -292,21 +246,21 @@ main img {
   display: block;
   transition: color 0.3s;
 }
-
 .nav-sections .nav-menu > li > a:hover {
   color: #999;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content {
   position: fixed !important;
-  inset: 140px 0 0;
-  background: rgb(0 0 0 / 95%);
+  top: 140px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
   z-index: 999;
   display: none !important;
   opacity: 0;
   transition: opacity 0.4s;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container {
   display: flex;
   max-width: 1400px;
@@ -317,33 +271,28 @@ main img {
   align-items: flex-start;
   justify-content: space-between;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-nav {
   flex: 0 0 400px;
   padding-top: 60px;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-nav a {
   color: #f5f5f7 !important;
   font-size: 32px;
   font-weight: 300;
   line-height: 1.4;
-  margin: 0 0 25px;
+  margin: 0 0 25px 0;
   padding: 12px 0;
   display: block;
   text-decoration: none;
   transition: all 0.3s;
   border-bottom: none;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-nav a:hover {
   color: #ccc !important;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-nav a:last-child {
   margin-bottom: 0;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image {
   flex: 1;
   display: flex;
@@ -352,15 +301,13 @@ main img {
   position: relative;
   width: 500px;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .dropdown-featured-img {
   width: 100%;
   height: 520px;
   object-fit: fill;
   border-radius: 4px;
-  box-shadow: 0 25px 50px rgb(0 0 0 / 40%);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay {
   position: absolute;
   bottom: 20px;
@@ -368,26 +315,23 @@ main img {
   text-align: left;
   z-index: 10;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-title {
   color: #f5f5f7;
   font-size: 42px;
   font-weight: 700;
   line-height: 0.2;
   margin-bottom: 20px;
-  text-shadow: 0 4px 20px rgb(0 0 0 / 60%);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-subtitle {
   color: #f5f5f7;
   font-size: 18px;
   font-weight: 400;
   margin-bottom: 30px;
-  text-shadow: 0 2px 10px rgb(0 0 0 / 60%);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-button {
-  background: #fff;
+  background: #ffffff;
   color: #000;
   padding: 10px 30px;
   text-decoration: none;
@@ -399,52 +343,43 @@ main img {
   transition: all 0.3s;
   border-radius: 2px;
 }
-
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-button:hover {
   background: #ccc;
   transform: translateZ(2px);
-  box-shadow: 0 8px 25px rgb(255 255 255 / 20%);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
-
 .nav-sections .nav-menu > li.has-dropdown:hover .dropdown-content {
   display: flex !important;
   opacity: 1;
 }
-
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .nav-sections .nav-menu {
     flex-direction: column;
     padding: 20px;
   }
-
   .nav-sections .nav-menu > li.has-dropdown .dropdown-content {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
   }
-
   .nav-sections .nav-menu > li.has-dropdown > a {
     pointer-events: auto !important;
     cursor: pointer !important;
   }
-
-  .nav-sections .nav-menu > li.has-dropdown > a::after {
+  .nav-sections .nav-menu > li.has-dropdown > a:after {
     display: none !important;
   }
-
   .nav-sections .nav-menu > li.has-dropdown.dropdown-open .dropdown-content {
     display: none !important;
     visibility: hidden !important;
   }
-
   .nav-sections .nav-menu li a {
     display: block;
     width: 100%;
     text-decoration: none;
   }
-
   .nav-sections .nav-menu li a:hover {
-    background-color: rgb(255 255 255 / 10%);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
