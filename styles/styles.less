@@ -54,6 +54,12 @@
 
 // --- Reset & Base Styles ---
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -68,6 +74,9 @@ body {
   background: @background-primary;
   -webkit-font-smoothing: antialiased;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
@@ -163,4 +172,14 @@ main img {
 .subtitle {
   font-weight: 500;
   color: @text-white;
+}
+.a {
+  display: block;
+  text-decoration: none;
+  color: @text-primary;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    color: @text-hover-transition;
+  }
 }

@@ -1,7 +1,7 @@
 @import '../../styles/styles.less';
 // Variables
 @primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-@gray: #666;
+@gray: #323232;
 @light-gray: #f8f9fa;
 
 // Dimensions
@@ -10,7 +10,7 @@
 @item-height: 300px;
 @item-height-mobile: 280px;
 @image-height: 220px;
-@container-max-width: 1200px;
+@container-max-width: 1300px;
 
 // Spacing
 @gap: 2rem;
@@ -32,11 +32,11 @@
 }
 
 .shadow(@level: 1) when (@level = 1) {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .shadow(@level: 2) when (@level = 2) {
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
 }
 
 .scale-transform(@scale: 1, @y: 0) {
@@ -198,7 +198,6 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   z-index: 3;
-  opacity: 0;
   .transition(opacity, @fast-transition, ease);
 
   @media (max-width: @mobile) {
@@ -221,5 +220,6 @@
 }
 
 #featured {
-  padding-left: 6%;
+  padding-left: 7%;
+  font-size: @text-3xl;
 }

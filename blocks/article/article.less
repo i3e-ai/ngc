@@ -1,3 +1,9 @@
+@import '../../styles/styles.less';
+#articles {
+  margin-bottom: 10px;
+  padding-left: 25%;
+  font-size: @text-4xl;
+}
 .article.block {
   .article-item {
     max-width: 700px;
@@ -12,15 +18,15 @@
 
   .article-image {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 
     img {
       max-width: 100%;
-      width: auto;   
-      
-      height: 300px;   
-      object-fit: cover; 
-      
+      width: auto;
+
+      height: 300px;
+      object-fit: cover;
+
       border-radius: 8px;
       border: 1px solid #ddd;
     }
@@ -31,6 +37,7 @@
     h2 {
       margin-top: 0;
       margin-bottom: 1rem;
+      font-size: @text-3xl;
     }
 
     p,
@@ -38,5 +45,20 @@
       margin-bottom: 1rem;
       line-height: 1.6;
     }
+  }
+}
+
+// --- ADDED: Mobile Breakpoint for Better Readability ---
+@media (width <= 768px) {
+  .article-item {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .article-image img {
+    // Reduce the image height on smaller screens
+    height: 200px;
   }
 }
