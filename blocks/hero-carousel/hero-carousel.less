@@ -48,7 +48,6 @@
     z-index: 2; /* Ensure text is in the foreground */
     color: white;
     max-width: 50%;
-    // REMOVED: flex: 1 and brittle padding-top
 
     .slide-title {
       font-size: 3rem;
@@ -59,24 +58,13 @@
     .slide-subtitle {
       font-size: 1.5rem;
       font-weight: normal;
-      margin: 0;
+      margin-top: 0;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
     .slide-button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 12px 24px;
-      background-color: @background-white;
-      color: @text-primary;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: @background-black;
-        color: @text-white;
-      }
+      .button();
+      margin-top: 20px;
+      letter-spacing: 1px;
     }
   }
 

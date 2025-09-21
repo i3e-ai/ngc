@@ -135,6 +135,24 @@ main img {
 * {
   margin: 0;
 }
+/* Reusable block of css for buttons */
+.button {
+  background: #fafafa;
+  color: #000000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+.button:hover {
+  background: #ccc;
+  transform: translateZ(2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
 .nav-sections .nav-menu {
   display: flex;
   justify-content: flex-start;
@@ -239,14 +257,13 @@ main img {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-button {
-  background: #ffffff;
-  color: #000;
-  padding: 10px 30px;
+  background: #fafafa;
+  color: #000000;
+  padding: 10px 20px;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
   display: inline-block;
   transition: all 0.3s;
   border-radius: 2px;

@@ -135,6 +135,24 @@ main img {
 * {
   margin: 0;
 }
+/* Reusable block of css for buttons */
+.button {
+  background: #fafafa;
+  color: #000000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+.button:hover {
+  background: #ccc;
+  transform: translateZ(2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
 .header-wrapper {
   background-color: #fafafa;
   width: 100%;
