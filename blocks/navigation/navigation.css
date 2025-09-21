@@ -93,10 +93,10 @@ h6 {
   line-height: 1.2;
 }
 h1 {
-  font-size: 2.25rem;
+  font-size: 3rem;
 }
 h2 {
-  font-size: 1.875rem;
+  font-size: 2.5rem;
 }
 h3 {
   font-size: 1.5rem;
@@ -149,9 +149,22 @@ main img {
   border-radius: 2px;
 }
 .button:hover {
+  cursor: pointer;
   background: #ccc;
   transform: translateZ(2px);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+.title,
+.nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-title {
+  font-weight: 700;
+  color: #f5f5f7;
+  margin: 0;
+  line-height: 1.3;
+}
+.subtitle,
+.nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-subtitle {
+  font-weight: 500;
+  color: #f5f5f7;
 }
 .nav-sections .nav-menu {
   display: flex;
@@ -242,19 +255,8 @@ main img {
   z-index: 10;
 }
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-title {
-  color: #f5f5f7;
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 0.2;
-  margin-bottom: 20px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-}
-.nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-subtitle {
-  color: #f5f5f7;
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 30px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  font-size: 2.5rem;
+  margin: 0;
 }
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-button {
   background: #fafafa;
@@ -269,6 +271,7 @@ main img {
   border-radius: 2px;
 }
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content .dropdown-container .dropdown-image .image-overlay .overlay-button:hover {
+  cursor: pointer;
   background: #ccc;
   transform: translateZ(2px);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
