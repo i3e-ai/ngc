@@ -78,6 +78,9 @@ html {
   scroll-behavior: smooth;
   padding: 0;
 }
+main {
+  padding-top: 40px;
+}
 body {
   font-family: 'Sora', sans-serif;
   font-size: 1rem;
@@ -208,7 +211,7 @@ main img {
 }
 .nav-sections .nav-menu > li.has-dropdown .dropdown-content {
   position: fixed !important;
-  top: 140px;
+  top: 170px;
   left: 0;
   right: 0;
   bottom: 0;

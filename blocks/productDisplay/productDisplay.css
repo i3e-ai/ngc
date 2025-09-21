@@ -78,6 +78,9 @@ html {
   scroll-behavior: smooth;
   padding: 0;
 }
+main {
+  padding-top: 40px;
+}
 body {
   font-family: 'Sora', sans-serif;
   font-size: 1rem;
