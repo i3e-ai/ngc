@@ -132,108 +132,16 @@ main img {
   height: 100%;
   width: 100%;
 }
-/* Remove padding from section and wrapper containers */
-.section.highlight-container {
-  margin: 0;
-  padding: 0;
-}
-.highlight-wrapper {
-  margin: 0;
-  padding: 0;
-}
-.highlight.block {
-  /* Set a fixed height for the bar */
-  height: 22px;
-  line-height: 22px;
-  /* Use Flexbox to ensure alignment */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: sticky;
-  top: 0;
-  width: 100;
-  background-color: #ffffff;
-  color: #000000;
-  z-index: 1000;
-  box-sizing: border-box;
-  font-size: 0.8rem;
-  /* Using your specified font family */
-  font-family: 'Sora', sans-serif;
-  /* CRITICAL: Control text overflow */
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 0 20px;
-  /* Remove any default margins */
+* {
   margin: 0;
 }
-/* Target the main div container inside highlight block */
-.highlight.block > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  gap: 12px;
-  /* Space between emoji, title, and description */
-  white-space: nowrap;
-  overflow: hidden;
-}
-/* Target the nested divs that contain the emoji and content */
-.highlight.block > div > div {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-/* Style the emoji (h1) */
-.highlight.block h1 {
-  margin: 0;
-  padding: 0;
-  font-size: 1.2rem;
-  line-height: 1;
-  display: inline-block;
-}
-/* Style the title (h2) */
-.highlight.block h2 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1;
-  display: inline-block;
-  margin-right: 8px;
-  /* Small space before description */
-}
-/* Style the description (p) */
-.highlight.block p {
-  margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
-  opacity: 0.9;
-  line-height: 1;
-  display: inline-block;
-  font-weight: 300;
-}
-/* Ensure text doesn't overflow on small screens */
-@media (max-width: 768px) {
-  .highlight.block {
-    font-size: 0.7rem;
-    padding: 0 15px;
-  }
-  .highlight.block h1 {
-    font-size: 1rem;
-  }
-  .highlight.block h2 {
-    font-size: 0.7rem;
-  }
-  .highlight.block p {
-    font-size: 0.7rem;
-  }
-}
-/* FIX: Changed '1a' to a valid time */
 .hero-carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 80vh;
-  background-color: #f0f0f0;
+  background-color: #1c1c1c;
+  /* Darker background for contrast */
   user-select: none;
   -webkit-user-select: none;
 }
@@ -244,33 +152,32 @@ main img {
 .hero-carousel .slide {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  padding: 3rem;
-  box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
-  /* --- Image Display Rules --- */
-  background-color: #000;
-  /* ADDED: Controls the color of empty space */
-  background-size: 100% 100%;
-  /* CORRECT: This prevents cropping */
-  background-position: center;
-  background-repeat: no-repeat;
-  /* ADDED: Prevents the image from tiling */
+  display: flex;
+  /* Use flexbox to position text */
+  align-items: center;
+  /* Vertically center the text container */
+  padding: 3rem;
 }
-.hero-carousel .slide[aria-hidden='true'] {
-  visibility: hidden;
+.hero-carousel .slide-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Keep image in the background */
+}
+.hero-carousel .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .hero-carousel .slide-text {
-  flex: 1;
-  text-align: left;
+  position: relative;
+  /* Positioned on top of the image */
+  z-index: 2;
+  /* Ensure text is in the foreground */
   color: white;
-  border-radius: 8px;
   max-width: 50%;
-  padding-top: 340px;
-  font-family: 'Sora', sans-serif;
-  padding-bottom: 40px;
 }
 .hero-carousel .slide-text .slide-title {
   font-size: 3rem;
@@ -286,10 +193,9 @@ main img {
 }
 .hero-carousel .slide-text .slide-button {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   padding: 12px 24px;
   background-color: #ffffff;
-  /* Example color */
   color: #000000;
   text-decoration: none;
   font-weight: bold;
@@ -299,7 +205,6 @@ main img {
 .hero-carousel .slide-text .slide-button:hover {
   background-color: #000000;
   color: #f5f5f7;
-  /* Ensure text color stays white on hover */
 }
 .hero-carousel .carousel-pagination {
   position: absolute;
@@ -329,14 +234,16 @@ main img {
     height: 70vh;
   }
   .hero-carousel .slide {
-    flex-direction: column;
-    justify-content: flex-end;
     padding: 1.5rem;
     text-align: center;
+    justify-content: flex-end;
+    /* Push text to the bottom on mobile */
   }
   .hero-carousel .slide-text {
     max-width: 100%;
     text-align: center;
+    padding-bottom: 4rem;
+    /* Add space for pagination */
   }
   .hero-carousel .slide-text .slide-title {
     font-size: 2rem;

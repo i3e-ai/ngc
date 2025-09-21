@@ -1,14 +1,14 @@
 @import '../../styles/styles.less';
 
 // Variables
-@transition-speed: 0.5s; /* FIX: Changed '1a' to a valid time */
+@transition-speed: 0.5s;
 
 .hero-carousel {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 80vh;
-  background-color: #f0f0f0;
+  background-color: #1c1c1c; /* Darker background for contrast */
   user-select: none;
   -webkit-user-select: none;
 
@@ -17,36 +17,38 @@
     height: 100%;
   }
 
+  // --- ADDED: Base style for each slide ---
   .slide {
     position: absolute;
     inset: 0;
-    display: flex;
-    align-items: center;
-    padding: 3rem;
-    box-sizing: border-box;
     opacity: 0;
     transition: opacity @transition-speed ease-in-out;
+    display: flex; /* Use flexbox to position text */
+    align-items: center; /* Vertically center the text container */
+    padding: 3rem;
+  }
 
-    /* --- Image Display Rules --- */
-    background-color: #000; /* ADDED: Controls the color of empty space */
-    background-size: 100% 100%; /* CORRECT: This prevents cropping */
-    background-position: center;
-    background-repeat: no-repeat; /* ADDED: Prevents the image from tiling */
+  // --- NESTED: Moved inside .slide ---
+  .slide-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Keep image in the background */
 
-    &[aria-hidden='true'] {
-      visibility: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      // REMOVED: display:flex, padding, position from here
     }
   }
 
+  // --- NESTED: Moved inside .slide ---
   .slide-text {
-    flex: 1;
-    text-align: left;
+    position: relative; /* Positioned on top of the image */
+    z-index: 2; /* Ensure text is in the foreground */
     color: white;
-    border-radius: 8px;
     max-width: 50%;
-    padding-top: 340px;
-    font-family: @font-primary;
-    padding-bottom: 40px;
+    // REMOVED: flex: 1 and brittle padding-top
 
     .slide-title {
       font-size: 3rem;
@@ -60,22 +62,21 @@
       margin: 0;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
-
     .slide-button {
       display: inline-block;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       padding: 12px 24px;
-      background-color: @background-white; /* Example color */
+      background-color: @background-white;
       color: @text-primary;
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
       transition: background-color 0.3s ease;
-    }
 
-    .slide-button:hover {
-      background-color: @background-black;
-      color: @text-white; /* Ensure text color stays white on hover */
+      &:hover {
+        background-color: @background-black;
+        color: @text-white;
+      }
     }
   }
 
@@ -110,14 +111,15 @@
     height: 70vh;
 
     .slide {
-      flex-direction: column;
-      justify-content: flex-end;
       padding: 1.5rem;
       text-align: center;
+      justify-content: flex-end; /* Push text to the bottom on mobile */
     }
     .slide-text {
       max-width: 100%;
       text-align: center;
+      padding-bottom: 4rem; /* Add space for pagination */
+
       .slide-title {
         font-size: 2rem;
       }
