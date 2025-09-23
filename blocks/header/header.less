@@ -1,4 +1,4 @@
-@import '../../styles/styles.less';
+@import url('../../styles/styles.less');
 
 @header-height: 60px;
 
@@ -36,7 +36,7 @@
 
 // brand title
 #eds-app {
-  font-family: @font-primary; // Fixed: was 'font: @font-primary'
+  font-family: @font-primary; // Fixed: was 'font: @font-primary';
   font-weight: 700;
   font-size: @text-4xl;
   padding-bottom: 20px;
@@ -72,7 +72,7 @@
     display: block;
     position: fixed;
     top: 129px; // Use actual header height instead of @header-height
-    left: 0;
+    left: 0;Useactualheaderheightinsteadofleft
     width: 100%;
     height: calc(100vh - 88px);
     background: @background-primary;
@@ -116,7 +116,7 @@
 
   .nav-sections {
     display: block !important; // Always show navigation container on desktop
-    position: static;
+    position: static;Alwaysshownavigationcontainerondesktopposition
     height: auto;
     background: transparent;
 

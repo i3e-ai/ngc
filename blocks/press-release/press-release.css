@@ -1,91 +1,106 @@
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSn3-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSn3-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 200;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSnn-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSnn-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmScMnn-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmScMnn-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Sora';
+  font-family: Sora;
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf) format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf") format('truetype');
 }
+
 @font-face {
-  font-family: 'Geist';
+  font-family: Geist;
   src: url('/fonts/Geist-Regular.woff2') format('woff2');
   font-weight: 400;
+
   /* Regular */
   font-style: normal;
 }
+
 @font-face {
-  font-family: 'Geist';
+  font-family: Geist;
   src: url('/fonts/Geist-Bold.woff2') format('woff2');
   font-weight: 700;
+
   /* Bold */
   font-style: normal;
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 html {
   font-size: 16px;
   scroll-behavior: smooth;
   padding: 0;
 }
+
 main {
   padding-top: 40px;
 }
+
 body {
-  font-family: 'Sora', sans-serif;
+  font-family: Sora, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
-  color: #000000;
+  color: #000;
   background: #fafafa;
   -webkit-font-smoothing: antialiased;
   padding: 0;
@@ -93,63 +108,77 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: 'Geist', sans-serif;
+  font-family: Geist, sans-serif;
   font-weight: 700;
   line-height: 1.2;
 }
+
 h1 {
   font-size: 3rem;
 }
+
 h2 {
   font-size: 2.5rem;
 }
+
 h3 {
   font-size: 1.5rem;
 }
+
 h4 {
   font-size: 1.25rem;
 }
+
 p {
   margin-bottom: 1rem;
   line-height: 1.6;
 }
+
 main > .section {
-  margin: 0 0;
+  margin: 0;
 }
+
 main > .section > div {
   margin: auto;
-  padding: 0 0;
+  padding: 0;
 }
+
 main > .section:first-of-type {
   margin-top: 0;
 }
+
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
 }
+
 .icon {
   display: inline-block;
   height: 24px;
   width: 24px;
 }
+
 .icon img {
   height: 100%;
   width: 100%;
 }
+
 * {
   margin: 0;
 }
+
 /* Reusable block of css for buttons */
 .button {
   background: #fafafa;
-  color: #000000;
+  color: #000;
   padding: 10px 20px;
   text-decoration: none;
   font-size: 14px;
@@ -159,38 +188,46 @@ main img {
   transition: all 0.3s;
   border-radius: 2px;
 }
+
 .button:hover {
   cursor: pointer;
   background: #ccc;
   transform: translateZ(2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgb(255 255 255 / 20%);
 }
+
 .title {
   font-weight: 700;
   color: #f5f5f7;
   margin: 0;
   line-height: 1.3;
 }
+
 .subtitle {
   font-weight: 500;
   color: #f5f5f7;
 }
+
 .a {
   display: block;
   text-decoration: none;
-  color: #000000;
+  color: #000;
   cursor: pointer;
 }
+
 .a:hover,
 .a:focus {
   color: #4a4a4a;
 }
+
 .press-release {
   max-width: 960px;
   margin: 2rem auto;
   padding: 0 1rem;
+
   /* --- Element: Item --- */
 }
+
 .press-release__item {
   display: grid;
   grid-template-columns: 2fr 3fr 1fr;
@@ -199,22 +236,26 @@ main img {
   padding: 1.5rem 0;
   border-bottom: 1px solid #fafafa;
 }
+
 .press-release__item:last-child {
   border-bottom: none;
 }
+
 .press-release__title {
   font-weight: bold;
   font-size: 1.1rem;
-  color: #000000;
+  color: #000;
 }
+
 .press-release__info {
   color: #4a4a4a;
   font-size: 0.95rem;
   line-height: 1.5;
 }
+
 .press-release__button {
   background: #fafafa;
-  color: #000000;
+  color: #000;
   padding: 10px 20px;
   text-decoration: none;
   font-size: 14px;
@@ -223,16 +264,18 @@ main img {
   display: inline-block;
   transition: all 0.3s;
   border-radius: 2px;
-  border: 1px solid #000000;
+  border: 1px solid #000;
 }
+
 .press-release__button:hover {
   cursor: pointer;
   background: #ccc;
   transform: translateZ(2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgb(255 255 255 / 20%);
 }
+
 /* --- Responsive styles for mobile --- */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .press-release__item {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -242,6 +285,7 @@ main img {
     margin-bottom: 1rem;
     border-bottom: none;
   }
+
   .press-release__button {
     justify-self: start;
   }

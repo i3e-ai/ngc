@@ -1,4 +1,5 @@
 @import '../../styles/styles.less';
+
 .press-release {
   max-width: 960px;
   margin: 2rem auto;
@@ -32,12 +33,13 @@
 
   &__button {
     .button();
+
     border: 1px solid @text-primary;
   }
 }
 
 /* --- Responsive styles for mobile --- */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .press-release {
     &__item {
       grid-template-columns: 1fr;
