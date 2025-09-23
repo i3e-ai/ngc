@@ -3,6 +3,7 @@
   "rules": {
     "declaration-property-value-no-unknown": null,
     "keyframes-name-pattern": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "selector-class-pattern": null
   }
 }

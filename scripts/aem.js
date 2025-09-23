@@ -12,7 +12,7 @@
 
 /* eslint-env browser */
 function sampleRUM(checkpoint, data) {
-  // eslint-disable-next-line max-len
+   
   const timeShift = () => (window.performance
     ? window.performance.now()
     : Date.now() - window.hlx.rum.firstReadTime);
@@ -29,7 +29,7 @@ function sampleRUM(checkpoint, data) {
         .toString(36)
         .slice(-4);
       const isSelected = param !== 'off' && Math.random() * weight < 1;
-      // eslint-disable-next-line object-curly-newline, max-len
+       
       window.hlx.rum = {
         weight,
         id,
@@ -79,7 +79,7 @@ function sampleRUM(checkpoint, data) {
           || new URL(window.RUM_BASE || '/', new URL('https://rum.hlx.page'));
         sampleRUM.collectBaseURL = sampleRUM.collectBaseURL || sampleRUM.baseURL;
         sampleRUM.sendPing = (ck, time, pingData = {}) => {
-          // eslint-disable-next-line max-len, object-curly-newline
+           
           const rumData = JSON.stringify({
             weight,
             id,
@@ -198,7 +198,7 @@ function toCamelCase(name) {
  * @param {Element} block The block element
  * @returns {object} The block config
  */
-// eslint-disable-next-line import/prefer-default-export
+ 
 function readBlockConfig(block) {
   const config = {};
   block.querySelectorAll(':scope > div').forEach((row) => {
@@ -442,7 +442,7 @@ function decorateButtons(element) {
           twoup.classList.add('button-container');
         }
         if (
-          // eslint-disable-next-line operator-linebreak
+           
           up.childNodes.length === 1 &&
           up.tagName === 'EM'
           && twoup.childNodes.length === 1
