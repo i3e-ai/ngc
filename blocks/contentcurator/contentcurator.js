@@ -75,8 +75,8 @@ function initializeFeatureItem(block) {
     block.addEventListener('mouseleave', startAutoplay);
     
     // Touch controls for mobile
-    block.addEventListener('touchstart', stopAutoplay);
-    block.addEventListener('touchend', startAutoplay);
+    block.addEventListener('touchstart', stopAutoplay, { passive: true });
+    block.addEventListener('touchend', startAutoplay, { passive: true });
     
     // Initialize
     track.style.transform = `translateX(0px)`;
@@ -120,7 +120,35 @@ export default function decorate(block) {
     
     if (picture) {
       featureitemImage.appendChild(picture);
+      // Optimize images in the carousel for performance
+      const pictureImg = picture.querySelector('img');
+      if (pictureImg) {
+        // First few items should load eagerly for better LCP
+        if (index < 3) {
+          pictureImg.loading = 'eager';
+          if (index === 0) pictureImg.setAttribute('fetchpriority', 'high');
+        } else {
+          pictureImg.loading = 'lazy';
+        }
+        // Add dimensions if not present to prevent CLS
+        if (!pictureImg.width && !pictureImg.height) {
+          pictureImg.style.aspectRatio = '16/9';
+          pictureImg.style.objectFit = 'cover';
+        }
+      }
     } else if (img) {
+      // Optimize single images
+      if (index < 3) {
+        img.loading = 'eager';
+        if (index === 0) img.setAttribute('fetchpriority', 'high');
+      } else {
+        img.loading = 'lazy';
+      }
+      // Add dimensions if not present to prevent CLS
+      if (!img.width && !img.height) {
+        img.style.aspectRatio = '16/9';
+        img.style.objectFit = 'cover';
+      }
       featureitemImage.appendChild(img);
     }
     
