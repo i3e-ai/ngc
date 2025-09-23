@@ -31,5 +31,7 @@ module.exports = {
     'key-spacing': 'off',
     'brace-style': 'off',
     'space-before-blocks': 'off',
+    // eslint-disable-next-line no-dupe-keys
+    'linebreak-style': 'off',
   },
 };
