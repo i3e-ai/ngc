@@ -303,7 +303,7 @@ main img {
   .nav-sections .nav-menu {
     flex-direction: column;
     padding: 20px;
-    padding-top: 40px;
+    padding-top: 40px ;
   }
   .nav-sections .nav-menu > li.has-dropdown .dropdown-content {
     display: none !important;
