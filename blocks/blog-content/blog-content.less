@@ -1,0 +1,48 @@
+@import '../../styles/styles.less';
+.blog-content.block {
+  // Center the content and set a comfortable reading width
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // Style all headings
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    padding-left: 20px;
+    margin-bottom: 1.5rem;
+
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+  }
+
+  // Make sure the first element has no extra space at the top
+  > :first-child {
+    margin-top: 0;
+  }
+}

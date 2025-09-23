@@ -1,0 +1,41 @@
+.blog-hero.block {
+  position: relative;
+  width: 100%;
+  min-height: 400px; // Use min-height to be more flexible
+  color: white;
+  text-align: center;
+
+  // CRITICAL: These properties control the background image display
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  // This is the container for the text content
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // Adds a dark overlay for text readability
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding: 2rem;
+
+    h1,
+    h2 {
+      margin-top: 0;
+      font-size: 2.5rem;
+    }
+  }
+}
