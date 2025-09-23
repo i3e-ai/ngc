@@ -108,13 +108,32 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  rows.forEach((row) => {
+  rows.forEach((row, index) => {
     row.classList.add('slide');
 
     if(row.children.length < 2) return;
     const [imageCol, textCol] = row.children;
 
     imageCol.classList.add('slide-image');
+    
+    // Optimize image loading for LCP and CLS
+    const img = imageCol.querySelector('img');
+    if (img) {
+      // First slide should load eagerly for better LCP
+      if (index === 0) {
+        img.loading = 'eager';
+        img.setAttribute('fetchpriority', 'high');
+      } else {
+        img.loading = 'lazy';
+      }
+      
+      // Add dimensions to prevent CLS if not already present
+      if (!img.width && !img.height) {
+        img.width = '2000';
+        img.height = '1200';
+        img.style.aspectRatio = '5/3';
+      }
+    }
 
       textCol.classList.add('slide-text');
       const h2 = textCol.querySelector('h2');

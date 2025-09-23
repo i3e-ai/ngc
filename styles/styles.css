@@ -1,41 +1,11 @@
-@font-face {
-  font-family: Sora;
-  font-style: normal;
-  font-weight: 100;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSn3-K.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: Sora;
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSnn-K.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: Sora;
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmScMnn-K.ttf") format('truetype');
-}
-
+/* Load only essential font weights for better performance */
 @font-face {
   font-family: Sora;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: Sora;
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf") format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.woff2") format('woff2'),
+       url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf") format('truetype');
 }
 
 @font-face {
@@ -43,7 +13,8 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf") format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.woff2") format('woff2'),
+       url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf") format('truetype');
 }
 
 @font-face {
@@ -51,33 +22,24 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf") format('truetype');
-}
-
-@font-face {
-  font-family: Sora;
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf") format('truetype');
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.woff2") format('woff2'),
+       url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf") format('truetype');
 }
 
 @font-face {
   font-family: Geist;
-  src: url('/fonts/Geist-Regular.woff2') format('woff2');
+  font-style: normal;
   font-weight: 400;
-
-  /* Regular */
-  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Geist-Regular.woff2') format('woff2');
 }
 
 @font-face {
   font-family: Geist;
-  src: url('/fonts/Geist-Bold.woff2') format('woff2');
-  font-weight: 700;
-
-  /* Bold */
   font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Geist-Bold.woff2') format('woff2');
 }
 
 *,
@@ -88,7 +50,6 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
   padding: 0;
 }
 
@@ -102,7 +63,6 @@ body {
   line-height: 1.5;
   color: #000;
   background: #fafafa;
-  -webkit-font-smoothing: antialiased;
   padding: 0;
   min-height: 100vh;
   display: flex;
@@ -158,6 +118,24 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
+  /* Improve image loading performance */
+  display: block;
+}
+
+/* Prevent layout shift from images */
+img:not([width]):not([height]) {
+  aspect-ratio: 16 / 9; /* Default aspect ratio */
+}
+
+/* Hero images optimization */
+.hero-carousel .slide-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.blog-hero {
+  min-height: 50vh; /* Reserve space to prevent CLS */
 }
 
 .icon {
@@ -185,15 +163,12 @@ main img {
   font-weight: 600;
   text-transform: uppercase;
   display: inline-block;
-  transition: all 0.3s;
   border-radius: 2px;
 }
 
 .button:hover {
   cursor: pointer;
   background: #ccc;
-  transform: translateZ(2px);
-  box-shadow: 0 8px 25px rgb(255 255 255 / 20%);
 }
 
 .title {

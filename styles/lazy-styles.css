@@ -1,0 +1,62 @@
+/* Non-critical styles loaded after initial render for better performance */
+
+/* Animation and transition styles */
+.button {
+  transition: all 0.3s;
+}
+
+.button:hover {
+  transform: translateZ(2px);
+  box-shadow: 0 8px 25px rgb(255 255 255 / 20%);
+}
+
+/* Carousel animations */
+.hero-carousel .slide {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.hero-carousel .carousel-pagination button {
+  transition: background-color 0.3s ease;
+}
+
+/* Smooth scrolling (non-critical) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  .hero-carousel,
+  .carousel-pagination {
+    display: none !important;
+  }
+}
+
+/* Advanced hover effects */
+.slide-button:hover,
+.press-release-button:hover {
+  cursor: pointer;
+  background: #ccc;
+  transform: translateZ(2px);
+  box-shadow: 0 8px 25px rgb(255 255 255 / 20%);
+}
+
+/* Non-essential visual enhancements */
+body {
+  -webkit-font-smoothing: antialiased;
+}
