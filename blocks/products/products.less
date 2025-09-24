@@ -4,17 +4,23 @@
 @card-border-radius: 12px;
 @button-border-radius: 8px;
 
+main .section.products-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
 #products {
   padding-top: 20px;
-  padding-left: 7%;
 }
 
 //for windows resizing
 .products.block {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px; // A consistent gap between cards.
-  max-width: 1200px;Aconsistentgapbetweencards.max-width
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 0 20px;
 }

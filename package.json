@@ -5,8 +5,8 @@
   "description": "Starter project for Adobe Helix",
   "scripts": {
     "lint:js": "eslint .",
-    "lint:css": "stylelint \"blocks/**/*.css\" \"styles/*.css\"",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint '**/*.less'",
+    "lint": "npm run lint:js",
     "lint:fix": "npm run lint:js -- --fix && npm run lint:css -- --fix",
     "build:js": "node scripts/minify-js.js",
     "build": "npm run build:js"

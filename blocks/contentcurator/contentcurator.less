@@ -53,22 +53,31 @@
 }
 
 // Main EDS Block Styles
-.contentcurator {
-  max-width: @container-max-width;
+main .section.contentcurator-container {
+  max-width: 1250px;
   margin: 0 auto;
-  padding: @padding;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
 
+.contentcurator {
   @media (max-width: @mobile) {
     padding: @padding-mobile;
   }
+}
+
+#featured {
+  font-size: @text-3xl;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .featureitem-container {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: (@item-height + 40px); // Extra height for scaling effects
-  display: flex;Extraheightforscalingeffectsdisplay
+  height: (@item-height + 40px);
+  display: flex;
   align-items: center;
 
   @media (max-width: @mobile) {
@@ -228,9 +237,4 @@
   .featureitem-track {
     gap: 1.5rem;
   }
-}
-
-#featured {
-  padding-left: 7%;
-  font-size: @text-3xl;
 }
