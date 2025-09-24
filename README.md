@@ -1,5 +1,5 @@
-# Your Project's Title...
-Your project's description...
+# NGC Project | Powered by Adobe Edge Delivery Services
+This project is a modern, high-performance website for NGC, built using Adobe Edge Delivery Services. Content is authored directly in Google Docs and delivered instantly to the web, enabling rapid updates and achieving perfect Lighthouse scores.
 
 ## Environments
 - Preview: https://main--{repo}--{owner}.aem.page/
