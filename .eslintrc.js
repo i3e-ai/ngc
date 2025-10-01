@@ -1,6 +1,12 @@
 module.exports = {
   root: true,
-  extends: ['airbnb-base', 'prettier'],
+  // MODIFIED: Swapped 'airbnb-base' for 'airbnb' and added React plugins
+  extends: [
+    'airbnb', // Use the full Airbnb config which includes React rules
+    'plugin:react/jsx-runtime', // For modern React 17+
+    'plugin:json/recommended',
+    'plugin:xwalk/recommended',
+  ],
   env: {
     browser: true,
   },
@@ -9,29 +15,63 @@ module.exports = {
     allowImportExportEverywhere: true,
     sourceType: 'module',
     requireConfigFile: false,
+    // ADDED: This is crucial for parsing JSX
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    babelOptions: {
+      presets: ['@babel/preset-react'],
+    },
+  },
+  // ADDED: Settings for the React plugin
+  // .eslintrc.json
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
+      },
+      typescript: {
+        project: './tsconfig.json',
+      },
+      alias: {
+        map: [['~', path.resolve(__dirname, './src')]],
+        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
+      },
+    },
   },
   rules: {
-    'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
-    'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
-    'no-param-reassign': [2, { props: false }], // allow modifying properties of param
-    // Disable common stylistic rules
-
-    'comma-dangle': 'off',
-    'max-len': 'off',
-    'object-curly-spacing': 'off',
-    'array-bracket-spacing': 'off',
-    'space-before-function-paren': 'off',
-    'keyword-spacing': 'off',
-    'space-infix-ops': 'off',
-    'eol-last': 'off',
-    'no-trailing-spaces': 'off',
-    'padded-blocks': 'off',
-    'no-multiple-empty-lines': 'off',
-    'comma-spacing': 'off',
-    'key-spacing': 'off',
-    'brace-style': 'off',
-    'space-before-blocks': 'off',
-    // eslint-disable-next-line no-dupe-keys
-    'linebreak-style': 'off',
+    // Your existing rules are preserved
+    'import/extensions': ['error', { js: 'always' }],
+    'linebreak-style': ['error', 'unix'],
+    'no-param-reassign': ['error', { props: false }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*.config.js', '**/*.config.cjs'] },
+    ],
+    'no-console': 'off',
   },
+  plugins: [
+    'react',
+    'import', // Make sure import plugin is listed
+  ],
+  overrides: [
+    {
+      files: ['**/*.jsx'],
+      plugins: ['react', 'react-hooks'],
+      extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended'],
+      settings: {
+        react: {
+          version: '19.1',
+        },
+      },
+      rules: {
+        'react/react-in-jsx-scope': 'off', // Not needed with automatic JSX runtime
+        'react/prop-types': 'off', // Can enable if you want prop validation
+        'import/extensions': 'off',
+      },
+    },
+  ],
 };

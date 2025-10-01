@@ -3,7 +3,7 @@
 // Variables
 @transition-speed: 0.5s;
 
-.hero-carousel {
+.hero-carousel-container {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -11,66 +11,123 @@
   background-color: #1c1c1c; /* Darker background for contrast */
   user-select: none;
 
-  .slides-container {
+  .hero-carousel-track {
     width: 100%;
     height: 100%;
-  }
+    position: relative;
 
-  // --- ADDED: Base style for each slide ---
-  .slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity @transition-speed ease-in-out;
-    display: flex; /* Use flexbox to position text */
-    align-items:end; /* Vertically center the text container */
-    padding: 3rem;
-  }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity @transition-speed ease-in-out, visibility @transition-speed;
+      display: flex; /* Use flexbox to position text */
+      align-items: flex-end; /* Vertically align text to bottom */
+      padding: 3rem;
 
-  // --- NESTED: Moved inside .slide ---
-  .slide-image {
-    position: absolute;
-    inset: 0;
-    z-index: 1; /* Keep image in the background */
+      &.active {
+        opacity: 1;
+        visibility: visible;
+      }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      
+      // --- Slide Image ---
+      .slide-image {
+        position: absolute;
+        inset: 0;
+        z-index: 1; /* Keep image in the background */
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover img {
+          transform: scale(1.02);
+        }
+      }
+
+      // --- Slide Text ---
+      .slide-text {
+        position: relative; /* Positioned on top of the image */
+        z-index: 2; /* Ensure text is in the foreground */
+        color: white;
+        max-width: 50%;
+
+        .slide-title {
+          &:extend(.title);
+          font-size: @text-4xl;
+          text-shadow: 0 4px 20px rgb(0 0 0 / 60%);
+          animation: slideInUp 0.6s ease-out;
+        }
+
+        .slide-subtitle {
+          &:extend(.subtitle);
+          font-size: @text-xl;
+          text-shadow: 0 2px 10px rgb(0 0 0 / 60%);
+          animation: slideInUp 0.6s ease-out 0.2s both;
+        }
+
+        p {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          margin-top: 1rem;
+          opacity: 0.95;
+          text-shadow: 0 2px 8px rgb(0 0 0 / 50%);
+          animation: slideInUp 0.6s ease-out 0.4s both;
+        }
+
+        .slide-button {
+          .button();
+          margin-top: 20px;
+          letter-spacing: 1px;
+          animation: slideInUp 0.6s ease-out 0.6s both;
+        }
+      }
     }
   }
 
-  // --- NESTED: Moved inside .slide ---
-  .slide-text {
-    position: relative; /* Positioned on top of the image */
-    z-index: 2; /* Ensure text is in the foreground */
+  // Navigation Arrows
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    max-width: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
 
-    .slide-title {
-      &:extend(.title);
-
-      font-size: @text-4xl;
-      text-shadow: 0 4px 20px rgb(0 0 0 / 60%);
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-50%) scale(1.1);
     }
 
-    .slide-subtitle {
-      &:extend(.subtitle);
-
-      font-size: @text-xl;
-      text-shadow: 0 2px 10px rgb(0 0 0 / 60%);
+    &:active {
+      transform: translateY(-50%) scale(0.95);
     }
 
-    .slide-button {
-      .button();
+    &.prev {
+      left: 2rem;
+    }
 
-      margin-top: 20px;
-      letter-spacing: 1px;
+    &.next {
+      right: 2rem;
     }
   }
 
-  .carousel-pagination {
+  // Dots Pagination
+  .carousel-dots {
     position: absolute;
     bottom: 2rem;
     left: 50%;
@@ -79,7 +136,7 @@
     display: flex;
     gap: 10px;
 
-    button {
+    .dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
@@ -87,41 +144,128 @@
       background: rgb(255 255 255 / 50%);
       padding: 0;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, width 0.3s ease;
 
       &.active,
       &:hover {
         background: @background-white;
       }
+
+      &.active {
+        width: 32px;
+        border-radius: 6px;
+      }
     }
+  }
+
+  // Play/Pause Button
+  .carousel-play-pause {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // Empty State
+  .hero-carousel-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+    font-size: 1.2rem;
   }
 
   // Mobile responsive
   @media (width <= 768px) {
     height: 70vh;
 
-    .slide {
-      padding: 1.5rem;
-      text-align: center;
-      justify-content: flex-end; /* Push text to the bottom on mobile */
+    .hero-carousel-track {
+      .slide {
+        padding: 1.5rem;
+        justify-content: flex-end; /* Push text to the bottom on mobile */
+
+        .slide-text {
+          max-width: 100%;
+          text-align: center;
+          padding-bottom: 4rem; /* Add space for pagination */
+
+          .slide-title {
+            font-size: 2rem;
+          }
+
+          .slide-subtitle {
+            font-size: 1.2rem;
+          }
+        }
+      }
     }
 
-    .slide-text {
-      max-width: 100%;
-      text-align: center;
-      padding-bottom: 4rem; /* Add space for pagination */
+    .carousel-nav {
+      width: 40px;
+      height: 40px;
 
-      .slide-title {
-        font-size: 2rem;
+      &.prev {
+        left: 1rem;
       }
 
-      .slide-subtitle {
-        font-size: 1.2rem;
+      &.next {
+        right: 1rem;
       }
     }
 
-    .carousel-pagination {
+    .carousel-dots {
       bottom: 1.5rem;
+      gap: 8px;
+
+      .dot {
+        width: 10px;
+        height: 10px;
+
+        &.active {
+          width: 24px;
+        }
+      }
     }
+
+    .carousel-play-pause {
+      bottom: 1.5rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
+
+// Animations
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
