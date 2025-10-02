@@ -1,3 +1,4 @@
+// blocks/header/header.less
 @import url('../../styles/styles.less');
 
 @header-height: 60px;
@@ -9,15 +10,21 @@
 }
 
 // parent blocks consist of all the elements
-.header.block > div:first-child {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 88px;
-  padding: 0 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.header.block {
+  > div:first-child {
+    position: relative;
+  }
+
+  .header-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88px;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
 // logo & brand title
@@ -25,22 +32,22 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-}
 
-// logo image
-.nav-brand img {
-  max-height: 80px;
-  width: auto;
-  object-fit: contain;
-  padding-bottom: 10px;
-}
+  // logo image
+  img {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+    padding-bottom: 10px;
+  }
 
-// brand title
-#eds-app {
-  font-family: @font-primary; // Fixed: was 'font: @font-primary';
-  font-weight: 700;
-  font-size: @text-4xl;
-  padding-bottom: 20px;
+  // brand title
+  #eds-app {
+    font-family: @font-primary;
+    font-weight: 700;
+    font-size: @text-4xl;
+    padding-bottom: 20px;
+  }
 }
 
 .nav-hamburger {
@@ -48,21 +55,21 @@
   left: @space-2;
   top: 50%;
   transform: translateY(-50%);
-}
 
-// hamburger button
-.nav-hamburger button {
-  padding: 8px;
-  cursor: pointer;
-  background: none;
-  border: none;
-}
+  // hamburger button
+  button {
+    padding: 8px;
+    cursor: pointer;
+    background: none;
+    border: none;
 
-// hamburger icon
-.nav-hamburger h2 {
-  font-size: @text-3xl;
-  color: @text-primary;
-  margin: 0;
+    // hamburger icon
+    h2 {
+      font-size: @text-3xl;
+      color: @text-primary;
+      margin: 0;
+    }
+  }
 }
 
 // Navigation sections - Mobile behavior

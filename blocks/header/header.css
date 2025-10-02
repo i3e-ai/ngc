@@ -191,6 +191,9 @@ main img {
 }
 .header.block > div:first-child {
   position: relative;
+}
+.header.block .header-content {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,7 +213,7 @@ main img {
   object-fit: contain;
   padding-bottom: 10px;
 }
-#eds-app {
+.nav-brand #eds-app {
   font-family: 'Sora', sans-serif;
   font-weight: 700;
   font-size: 3rem;
@@ -228,7 +231,7 @@ main img {
   background: none;
   border: none;
 }
-.nav-hamburger h2 {
+.nav-hamburger button h2 {
   font-size: 2.5rem;
   color: #000000;
   margin: 0;
