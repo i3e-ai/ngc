@@ -21,6 +21,7 @@
       color: @text-primary;
       font-size: 16px;
     }
+
     // --- Full Page Dropdown ---
     &.has-dropdown {
       .dropdown-content {
@@ -64,12 +65,12 @@
             justify-content: flex-end;
             align-items: flex-end;
             position: relative;
-            width: 700px;
+            width: 640px;
             border: 1px solid black;
 
             .dropdown-featured-img {
               width: 100%;
-              height: 560px;
+              height: 480px;
               object-fit: fill;
               border-radius: 2px;
               box-shadow: 0 25px 50px rgb(0 0 0 / 40%);
@@ -98,6 +99,29 @@
                 .button();
               }
             }
+          }
+        }
+      }
+
+      // Simple dropdown without image
+      .dropdown-content.dropdown-simple {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        inset: auto;
+        background: @overlay-bg;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 10px 0;
+        min-width: 200px;
+        flex-direction: column;
+
+        a {
+          .a();
+          padding: 10px 20px;
+          display: block;
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.05);
           }
         }
       }
@@ -131,7 +155,7 @@
         .a();
       }
 
-      > li.has-dropdown.dropdown-open .dropdown-content {
+      &.dropdown-open .dropdown-content {
         display: none !important;
         visibility: hidden !important;
 
