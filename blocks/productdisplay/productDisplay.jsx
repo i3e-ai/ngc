@@ -59,8 +59,6 @@ export default function decorate(block) {
   }
   block.dataset.decorated = 'true';
 
-  // *** KEY CHANGE HERE ***
-  // Add the grid classes directly to the block element itself.
   block.classList.add('productdisplay');
 
   const productsData = [...block.querySelectorAll(':scope > div')]
