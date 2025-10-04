@@ -122,8 +122,30 @@ export default function decorate(block) {
 
   const [titleWrapper, logoWrapper, hamburgerWrapper] = contentRow.children;
 
-  // Extract HTML content
-  const logoHtml = logoWrapper.innerHTML;
+  // Fix image dimensions to prevent layout shift
+  const fixImageDimensions = (html) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+    const images = tempDiv.querySelectorAll('img');
+    images.forEach((img) => {
+      // Remove lazy loading from header images for faster LCP
+      img.removeAttribute('loading');
+      // Add explicit dimensions if not present
+      if (!img.hasAttribute('width') && !img.hasAttribute('height')) {
+        // Set reasonable defaults for header logo
+        img.setAttribute('width', '120');
+        img.setAttribute('height', '120');
+      }
+      // Ensure images have proper styling
+      img.style.width = 'auto';
+      img.style.height = 'auto';
+      img.style.maxWidth = '100%';
+    });
+    return tempDiv.innerHTML;
+  };
+
+  // Extract HTML content with fixed images
+  const logoHtml = fixImageDimensions(logoWrapper.innerHTML);
   const titleHtml = titleWrapper.innerHTML;
   const hamburgerHtml = hamburgerWrapper.innerHTML;
 

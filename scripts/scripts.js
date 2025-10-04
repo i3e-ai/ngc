@@ -10,8 +10,15 @@ import {
   loadCSS,
 } from './aem.js';
 
+import {
+  preloadCriticalResources,
+  optimizeImages,
+  addResourceHints,
+  monitorWebVitals,
+} from './performance.js';
+
 /**
- * Setup React import map for ESM modules
+ * Setup React import map for ESM modules with performance optimizations
  */
 function setupReactImportMap() {
   if (!document.querySelector('script[type="importmap"]')) {
@@ -19,10 +26,10 @@ function setupReactImportMap() {
     importMap.type = 'importmap';
     importMap.textContent = JSON.stringify({
       imports: {
-        react: 'https://esm.sh/react@19.1.1',
-        'react-dom': 'https://esm.sh/react-dom@19.1.1',
-        'react-dom/client': 'https://esm.sh/react-dom@19.1.1/client',
-        'react/jsx-runtime': 'https://esm.sh/react@19.1.1/jsx-runtime',
+        react: 'https://esm.sh/react@19.1.1?target=es2022',
+        'react-dom': 'https://esm.sh/react-dom@19.1.1?target=es2022',
+        'react-dom/client': 'https://esm.sh/react-dom@19.1.1/client?target=es2022',
+        'react/jsx-runtime': 'https://esm.sh/react@19.1.1/jsx-runtime?target=es2022',
       },
     });
     document.head.prepend(importMap);
@@ -108,9 +115,35 @@ function loadDelayed() {
 }
 
 async function loadPage() {
+  // Initialize performance optimizations early
+  addResourceHints();
+  preloadCriticalResources();
+  
   await loadEager(document);
   await loadLazy(document);
+  
+  // Fix images that got opacity set to 0 by performance optimization
+  setTimeout(() => {
+    const hiddenImages = document.querySelectorAll('img[style*="opacity: 0"]');
+    hiddenImages.forEach(img => {
+      if (img.src.includes('media_')) {
+        img.style.opacity = '1';
+        console.log('Fixed hidden product image:', img.src);
+      }
+    });
+  }, 100);
+  
+  // Optimize images after lazy content is loaded - DISABLED due to opacity issues
+  // setTimeout(() => {
+  //   optimizeImages();
+  // }, 100);
+  
   loadDelayed();
+  
+  // Monitor performance in development - DISABLED to reduce console noise
+  // if (window.location.hostname.includes('localhost') || window.location.hostname.includes('aem.page')) {
+  //   monitorWebVitals();
+  // }
 }
 
 loadPage();

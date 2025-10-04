@@ -309,8 +309,10 @@ function createOptimizedPicture(
   alt = '',
   eager = false,
   breakpoints = [
-    { media: '(min-width: 600px)', width: '2000' },
-    { width: '750' },
+    { media: '(min-width: 1200px)', width: '1200' },
+    { media: '(min-width: 768px)', width: '768' },
+    { media: '(min-width: 480px)', width: '480' },
+    { width: '320' },
   ],
 ) {
   const url = new URL(src, window.location.href);
@@ -344,6 +346,16 @@ function createOptimizedPicture(
       const img = document.createElement('img');
       img.setAttribute('loading', eager ? 'eager' : 'lazy');
       img.setAttribute('alt', alt);
+      // Add width and height attributes to prevent layout shift
+      if (br.width) {
+        img.setAttribute('width', br.width);
+        // Maintain aspect ratio - height will be auto-adjusted by CSS
+        img.setAttribute('height', 'auto');
+      }
+      // Add fetchpriority for LCP images
+      if (eager) {
+        img.setAttribute('fetchpriority', 'high');
+      }
       picture.appendChild(img);
       img.setAttribute(
         'src',
