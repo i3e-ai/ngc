@@ -11,6 +11,28 @@ import {
 } from './aem.js';
 
 /**
+ * Setup React import map for ESM modules
+ */
+function setupReactImportMap() {
+  if (!document.querySelector('script[type="importmap"]')) {
+    const importMap = document.createElement('script');
+    importMap.type = 'importmap';
+    importMap.textContent = JSON.stringify({
+      imports: {
+        react: 'https://esm.sh/react@19.1.1',
+        'react-dom': 'https://esm.sh/react-dom@19.1.1',
+        'react-dom/client': 'https://esm.sh/react-dom@19.1.1/client',
+        'react/jsx-runtime': 'https://esm.sh/react@19.1.1/jsx-runtime',
+      },
+    });
+    document.head.prepend(importMap);
+  }
+}
+
+// Initialize import map immediately
+setupReactImportMap();
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {

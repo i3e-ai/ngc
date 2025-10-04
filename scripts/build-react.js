@@ -56,6 +56,7 @@ async function buildReactBlocks() {
       sourcemap: isWatch ? 'inline' : false,
       target: 'es2020',
       logLevel: 'error',
+      external: ['react', 'react-dom', 'react-dom/client'],
     }));
 
     if (isWatch) {
