@@ -19,7 +19,7 @@ function HeroCarousel({ slides }) {
 
   // Auto-play functionality
   useEffect(() => {
-    if (!isAutoPlaying || slides.length <= 1) return;
+    if (!isAutoPlaying || slides.length <= 1) return undefined;
 
     const interval = setInterval(() => {
       goToNext();

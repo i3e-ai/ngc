@@ -122,7 +122,7 @@ function FeatureItem({ items }) {
 
   // Setup effect
   useEffect(() => {
-    if (!items.length) return;
+    if (!items.length) return undefined;
 
     // Clone items for infinite loop effect
     const clones = 4;

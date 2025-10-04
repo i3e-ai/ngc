@@ -1,62 +1,33 @@
+// .eslintrc.js
 module.exports = {
   root: true,
-  // MODIFIED: Swapped 'airbnb-base' for 'airbnb' and added React plugins
-  extends: [
-    'airbnb', // Use the full Airbnb config which includes React rules
-    'plugin:react/jsx-runtime', // For modern React 17+
-    'plugin:json/recommended',
-    'plugin:xwalk/recommended',
-  ],
+  extends: ['airbnb-base', 'prettier'],
   env: {
     browser: true,
+    es2021: true,
   },
   parser: '@babel/eslint-parser',
   parserOptions: {
-    allowImportExportEverywhere: true,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     requireConfigFile: false,
-    // ADDED: This is crucial for parsing JSX
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 'latest',
     babelOptions: {
       presets: ['@babel/preset-react'],
     },
   },
-  // ADDED: Settings for the React plugin
-  // .eslintrc.json
   settings: {
     'import/resolver': {
       node: {
-        paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
-      },
-      typescript: {
-        project: './tsconfig.json',
-      },
-      alias: {
-        map: [['~', path.resolve(__dirname, './src')]],
-        extensions: ['.js', '.jsx', '.ts', '.d.ts', '.tsx'],
+        extensions: ['.js', '.jsx'],
       },
     },
   },
   rules: {
-    // Your existing rules are preserved
     'import/extensions': ['error', { js: 'always' }],
-    'linebreak-style': ['error', 'unix'],
+    'no-console': 'warn',
     'no-param-reassign': ['error', { props: false }],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'import/no-extraneous-dependencies': [
-      'error',
-      { devDependencies: ['**/*.config.js', '**/*.config.cjs'] },
-    ],
-    'no-console': 'off',
+    'import/prefer-default-export': 'off',
   },
-  plugins: [
-    'react',
-    'import', // Make sure import plugin is listed
-  ],
   overrides: [
     {
       files: ['**/*.jsx'],
@@ -68,10 +39,24 @@ module.exports = {
         },
       },
       rules: {
-        'react/react-in-jsx-scope': 'off', // Not needed with automatic JSX runtime
-        'react/prop-types': 'off', // Can enable if you want prop validation
+        'react/react-in-jsx-scope': 'off',
+        'react/prop-types': 'off',
         'import/extensions': 'off',
       },
     },
+  ],
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    'build/',
+    '*.min.js',
+    // Ignore generated bundle outputs from React build step
+    'blocks/**/*.js',
+    // Ignore build scripts and config files
+    'scripts/',
+    'vite.config.js',
+    // Ignore AEM core files
+    'scripts.js',
+    'aem.js',
   ],
 };
