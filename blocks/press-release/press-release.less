@@ -1,0 +1,39 @@
+@import url('../../styles/styles.less');
+/* Main block container */
+.press-release.block {
+  max-width: 960px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.press-release-item {
+  display: grid;
+  grid-template-columns: 3fr 4fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid black;
+}
+
+/* The title of the press release */
+.press-release-button {
+  .button();
+  border: 1px solid black;
+}
+
+.press-release-button:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+  .press-release-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .press-release-button {
+    justify-self: start;
+  }
+}
