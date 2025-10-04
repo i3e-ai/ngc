@@ -309,10 +309,9 @@ function createOptimizedPicture(
   alt = '',
   eager = false,
   breakpoints = [
-    { media: '(min-width: 1200px)', width: '1200' },
-    { media: '(min-width: 768px)', width: '768' },
+    { media: '(min-width: 768px)', width: '678' }, // Actual display size from PSI
     { media: '(min-width: 480px)', width: '480' },
-    { width: '320' },
+    { width: '331' }, // Mobile display size from PSI
   ],
 ) {
   const url = new URL(src, window.location.href);

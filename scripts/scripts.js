@@ -10,12 +10,8 @@ import {
   loadCSS,
 } from './aem.js';
 
-import {
-  preloadCriticalResources,
-  optimizeImages,
-  addResourceHints,
-  monitorWebVitals,
-} from './performance.js';
+// Lazy import performance utilities to reduce initial bundle size
+const loadPerformanceUtils = () => import('./performance.js');
 
 /**
  * Setup React import map for ESM modules with performance optimizations
@@ -115,10 +111,6 @@ function loadDelayed() {
 }
 
 async function loadPage() {
-  // Initialize performance optimizations early
-  addResourceHints();
-  preloadCriticalResources();
-  
   await loadEager(document);
   await loadLazy(document);
   
@@ -133,17 +125,15 @@ async function loadPage() {
     });
   }, 100);
   
-  // Optimize images after lazy content is loaded - DISABLED due to opacity issues
-  // setTimeout(() => {
-  //   optimizeImages();
-  // }, 100);
-  
   loadDelayed();
   
-  // Monitor performance in development - DISABLED to reduce console noise
-  // if (window.location.hostname.includes('localhost') || window.location.hostname.includes('aem.page')) {
-  //   monitorWebVitals();
-  // }
+  // Load performance utilities after critical path
+  loadPerformanceUtils().then(({ addResourceHints, preloadCriticalResources }) => {
+    addResourceHints();
+    preloadCriticalResources();
+  }).catch(() => {
+    // Performance utils failed to load, continue without them
+  });
 }
 
 loadPage();

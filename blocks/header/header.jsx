@@ -130,16 +130,16 @@ export default function decorate(block) {
     images.forEach((img) => {
       // Remove lazy loading from header images for faster LCP
       img.removeAttribute('loading');
-      // Add explicit dimensions if not present
+      // Add explicit dimensions if not present to prevent layout shift
       if (!img.hasAttribute('width') && !img.hasAttribute('height')) {
         // Set reasonable defaults for header logo
         img.setAttribute('width', '120');
         img.setAttribute('height', '120');
       }
-      // Ensure images have proper styling
-      img.style.width = 'auto';
-      img.style.height = 'auto';
-      img.style.maxWidth = '100%';
+      // Remove inline styles that can cause layout shift
+      img.style.removeProperty('width');
+      img.style.removeProperty('height');
+      img.style.removeProperty('max-width');
     });
     return tempDiv.innerHTML;
   };

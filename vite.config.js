@@ -23,11 +23,22 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Manual chunk splitting for better caching
-        manualChunks: {
+        manualChunks: (id) => {
           // Vendor chunks
-          'react-vendor': ['react', 'react-dom'],
-          // Separate chunk for large libraries
-          'utils': ['./scripts/aem.js'],
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) {
+              return 'react-vendor';
+            }
+            return 'vendor';
+          }
+          // Performance utilities as separate chunk
+          if (id.includes('performance.js')) {
+            return 'performance';
+          }
+          // Service worker as separate chunk
+          if (id.includes('sw.js')) {
+            return 'sw';
+          }
         },
         // Optimize chunk file names for caching
         chunkFileNames: 'assets/js/[name]-[hash].js',
