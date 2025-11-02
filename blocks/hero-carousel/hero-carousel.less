@@ -1,0 +1,127 @@
+@import '../../styles/styles.less';
+
+// Variables
+@transition-speed: 0.5s;
+
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 80vh;
+  background-color: #1c1c1c; /* Darker background for contrast */
+  user-select: none;
+
+  .slides-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  // --- ADDED: Base style for each slide ---
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity @transition-speed ease-in-out;
+    display: flex; /* Use flexbox to position text */
+    align-items:end; /* Vertically center the text container */
+    padding: 3rem;
+  }
+
+  // --- NESTED: Moved inside .slide ---
+  .slide-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Keep image in the background */
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      
+    }
+  }
+
+  // --- NESTED: Moved inside .slide ---
+  .slide-text {
+    position: relative; /* Positioned on top of the image */
+    z-index: 2; /* Ensure text is in the foreground */
+    color: white;
+    max-width: 50%;
+
+    .slide-title {
+      &:extend(.title);
+
+      font-size: @text-4xl;
+      text-shadow: 0 4px 20px rgb(0 0 0 / 60%);
+    }
+
+    .slide-subtitle {
+      &:extend(.subtitle);
+
+      font-size: @text-xl;
+      text-shadow: 0 2px 10px rgb(0 0 0 / 60%);
+    }
+
+    .slide-button {
+      .button();
+
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .carousel-pagination {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+
+    button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid white;
+      background: rgb(255 255 255 / 50%);
+      padding: 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.active,
+      &:hover {
+        background: @background-white;
+      }
+    }
+  }
+
+  // Mobile responsive
+  @media (width <= 768px) {
+    height: 70vh;
+
+    .slide {
+      padding: 1.5rem;
+      text-align: center;
+      justify-content: flex-end; /* Push text to the bottom on mobile */
+    }
+
+    .slide-text {
+      max-width: 100%;
+      text-align: center;
+      padding-bottom: 4rem; /* Add space for pagination */
+
+      .slide-title {
+        font-size: 2rem;
+      }
+
+      .slide-subtitle {
+        font-size: 1.2rem;
+      }
+    }
+
+    .carousel-pagination {
+      bottom: 1.5rem;
+    }
+  }
+}

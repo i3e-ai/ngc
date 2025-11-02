@@ -185,3 +185,58 @@ main img {
 .a:focus {
   color: #4a4a4a;
 }
+@keyframes slide-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.highlight.block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(185, 185, 185, 0.784);
+  color: #000000;
+  overflow: hidden;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+.highlight-slides-container,
+.scrolling-wrapper {
+  height: 100%;
+}
+.scrolling-wrapper {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  animation: slide-left 25s linear infinite;
+}
+.highlight-slide {
+  white-space: nowrap;
+  padding: 0 4rem;
+  display: flex;
+  align-items: center;
+}
+.highlight-slide > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.highlight-slide h2,
+.highlight-slide p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1;
+}
+.highlight-slide h2 {
+  font-weight: 700;
+}
+.highlight-slide::after {
+  content: '•';
+  margin-left: 100px;
+}

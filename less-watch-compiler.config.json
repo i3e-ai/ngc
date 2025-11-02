@@ -1,0 +1,7 @@
+{
+  "watchFolder": "less",
+  "outputFolder": "styles",
+  "includeHidden": false,
+  "sourceMap": false,
+  "allowedExtensions": [".less"]
+}
